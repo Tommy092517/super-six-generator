@@ -1,0 +1,161 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(./fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(./fonts/Roboto-VariableFont_wdth\,wght.ttf);
+}
+
+body {
+    margin: 0;
+    background-color: rgb(211, 211, 211);
+    color: aliceblue;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+header {
+    background-color: rgb(80, 80, 80);
+    padding-top: 10px;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+footer {
+    background-color: aliceblue;
+    padding-bottom: 3px;
+}
+
+
+.team {
+    display: inline-block;
+    width: 110px;
+    height: 132px;
+    padding-top: 30px;
+    vertical-align: top;
+}
+
+.team p{
+    margin-top: 20px;
+    width: 100px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.scoreboard {
+    width: 166px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: top;
+    padding-top: 55px;
+}
+
+select {
+    margin-top: 40px;
+    width: 128px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background-color: blue;
+    color: aliceblue;
+    border: 0px;
+    border-radius: 8px;
+}
+
+option{
+    background-color: rgb(1, 135, 83);
+    color: aliceblue;
+    border-radius: 8px;
+}
+
+option:hover{
+    color: aliceblue;
+    background-color: rgb(0, 82, 41)
+}
+
+option:checked {
+    background-color: blue;
+}
+
+.score,
+.versus {
+    display: inline-block;
+    margin: 0 7px;
+}
+
+.score {
+    font-size: 60px;
+}
+
+.versus {
+    font-size: 40px;
+    vertical-align: top;
+    padding-top: 12px;
+}
+
+.match {
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    height: 200px;
+    margin: 30px;
+    background-color: blue;
+    border: 2px outset blue;
+    border-radius: 20px;
+}
+
+.container {
+    text-align: center;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: aliceblue;
+  background-color: rgb(1, 135, 83);
+  border-radius: 10px;
+  border-style: hidden;
+  height: 50px;
+  width: 874px;
+  margin-bottom: 15px;
+}
+
+hr{
+    margin-bottom: 0px;
+}
+
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(0, 82, 41);
+}
+
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 5px;
+}
+
+#super6{
+    display: block; 
+}
+
+#s6button:hover{
+    transform: scale(1.1);
+}
