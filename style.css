@@ -8,6 +8,7 @@
     src: url(./fonts/Roboto-VariableFont_wdth\,wght.ttf);
 }
 
+
 body {
     min-height: 100vh;
     display: flex;
@@ -142,8 +143,14 @@ button {
 }
 
 @media(max-width:947px){
+    .match {
+        width: calc(80%);
+        margin: 30px auto;
+        min-width: 400px;
+    }
+
     button {
-        width: 400px;
+        width: calc(100% - 60px);
     }
 }
 
