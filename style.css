@@ -65,7 +65,7 @@ footer {
 }
 
 .scoreboard {
-    width: 166px;
+    width: 150px;
     display: inline-block;
     margin: 0;
     vertical-align: top;
@@ -73,7 +73,7 @@ footer {
 }
 
 select {
-    margin-top: 40px;
+    margin-top: 45px;
     width: 128px;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -105,11 +105,11 @@ option:checked {
 }
 
 .score {
-    font-size: 60px;
+    font-size: 50px;
 }
 
 .versus {
-    font-size: 40px;
+    font-size: 30px;
     vertical-align: top;
     padding-top: 12px;
 }
@@ -117,9 +117,9 @@ option:checked {
 .match {
     display: inline-block;
     vertical-align: top;
-    width: 400px;
+    width: 382px;
     height: 200px;
-    margin: 30px;
+    margin: 20px 25px;
     background-color: blue;
     border: 2px outset blue;
     border-radius: 20px;
@@ -136,21 +136,21 @@ button {
     color: aliceblue;
     background-color: rgb(1, 135, 83);
     border-radius: 10px;
-     border-style: hidden;
+    border-style: hidden;
     height: 50px;
     margin-bottom: 15px;
-    width: 874px;
+    width: 828px;
 }
 
 @media(max-width:947px){
     .match {
         width: calc(80%);
         margin: 30px auto;
-        min-width: 396px;
+        min-width: 382px;
     }
 
     button {
-        width: calc(100% - 60px);
+        width: calc(100% - 30px);
     }
 }
 
