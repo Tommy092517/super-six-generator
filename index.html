@@ -20,16 +20,35 @@
 
     <main>
 
+        <div id="showxG">
+            <p id="toggle">
+                Toggle xG:
+                <label class="switch">
+                    <input type="checkbox" id="xgSwitch">
+                    <span class="slider"></span>
+                </label>
+            </p>
+            <p id="small">xG stats from</p>
+            <a id="pitchodds" class="imgLink" href="https://pitchodds.app/" target="_blank" rel="noopener noreferrer">
+                <img src="./images/pitchodds.png" width="100" height="auto" alt="PitchOdds">
+            </a>
+            
+        </div>
+
         <div class="container">
             <div class="match">
                 <div class="team" id="homeTeam1">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 1</p>
+                    <p class="teamTop">team 1</p>
+                    <p id="homexg1" class="xGshownLeft"> xG: </p>
                 </div>
                     <div class="scoreboard">
-                        <p class="score" id="homeScore1"> 4 </p>
+                        <button class="lock" id="lock1">
+                            <img id="lockImage1" class="lockImage" src="./images/unlocked.png" alt="Unlock fixture">
+                        </button>
+                        <p class="score" id="homeScore1"> - </p>
                         <p class="versus"> <b>v</b></p>
-                        <p class="score" id="awayScore1"> 4 </p>
+                        <p class="score" id="awayScore1"> - </p>
                         <select id="randomness1">
                             <option value="match-xg">xG Rounded</option>
                             <option value="very-conservative">Very conservative</option>
@@ -40,19 +59,24 @@
                     </div>
                 <div class="team" id="awayTeam1">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 2</p>
+                    <p class="teamTop">team 2</p>
+                    <p id="awayxg1" class="xGshownRight"> xG: </p>
                 </div>
             </div>
 
             <div class="match">
                 <div class="team" id="homeTeam2">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 3</p>
+                    <p class="teamTop">team 3</p>
+                    <p id="homexg2" class="xGshownLeft"> xG: </p>
                 </div>
                     <div class="scoreboard">
-                        <p class="score" id="homeScore2"> 8 </p>
+                        <button class="lock" id="lock2">
+                            <img id="lockImage2" class="lockImage" src="./images/unlocked.png" alt="Unlock fixture">
+                        </button>
+                        <p class="score" id="homeScore2"> - </p>
                         <p class="versus"> <b>v</b></p>
-                        <p class="score" id="awayScore2"> 8 </p>
+                        <p class="score" id="awayScore2"> - </p>
                         <select id="randomness2">
                             <option value="match-xg">xG Rounded</option>
                             <option value="very-conservative">Very conservative</option>
@@ -63,7 +87,8 @@
                     </div>
                 <div class="team" id="awayTeam2">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 4</p>
+                    <p class="teamTop">team 4</p>
+                    <p id="awayxg2" class="xGshownRight"> xG: </p>
                 </div>
             </div>
         </div>
@@ -72,9 +97,13 @@
             <div class="match">
                 <div class="team" id="homeTeam3">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 5</p>
+                    <p class="teamTop">team 5</p>
+                    <p id="homexg3" class="xGshownLeft"> xG: </p>
                 </div>
                     <div class="scoreboard">
+                        <button class="lock" id="lock3">
+                            <img id="lockImage3" class="lockImage" src="./images/unlocked.png" alt="Unlock fixture">
+                        </button>
                         <p class="score" id="homeScore3"> - </p>
                         <p class="versus"> <b>v</b></p>
                         <p class="score" id="awayScore3"> - </p>
@@ -88,16 +117,21 @@
                     </div>
                 <div class="team" id="awayTeam3">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 6</p>
+                    <p class="teamTop">team 6</p>
+                    <p id="awayxg3" class="xGshownRight"> xG: </p>
                 </div>
             </div>
 
             <div class="match">
                 <div class="team" id="homeTeam4">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 7</p>
+                    <p class="teamTop">team 7</p>
+                    <p id="homexg4" class="xGshownLeft"> xG: </p>
                 </div>
                     <div class="scoreboard">
+                        <button class="lock" id="lock4">
+                            <img id="lockImage4" class="lockImage" src="./images/unlocked.png" alt="Unlock fixture">
+                        </button>
                         <p class="score" id="homeScore4"> - </p>
                         <p class="versus"> <b>v</b></p>
                         <p class="score" id="awayScore4"> - </p>
@@ -111,7 +145,8 @@
                     </div>
                 <div class="team" id="awayTeam4">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 8</p>
+                    <p class="teamTop">team 8</p>
+                    <p id="awayxg4" class="xGshownRight"> xG: </p>
                 </div>
             </div>
         </div>
@@ -120,9 +155,13 @@
             <div class="match">
                 <div class="team" id="homeTeam5">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 9</p>
+                    <p class="teamTop">team 9</p>
+                    <p id="homexg5" class="xGshownLeft"> xG: </p>
                 </div>
                     <div class="scoreboard">
+                        <button class="lock" id="lock5">
+                            <img id="lockImage5" class="lockImage" src="./images/unlocked.png" alt="Unlock fixture">
+                        </button>
                         <p class="score" id="homeScore5"> - </p>
                         <p class="versus"> <b>v</b></p>
                         <p class="score" id="awayScore5"> - </p>
@@ -136,16 +175,21 @@
                     </div>
                 <div class="team" id="awayTeam5">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 10</p>
+                    <p class="teamTop">team 10</p>
+                    <p id="awayxg5" class="xGshownRight"> xG: </p>
                 </div>
             </div>
 
             <div class="match">
                 <div class="team" id="homeTeam6">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 11</p>
+                    <p class="teamTop">team 11</p>
+                    <p id="homexg6" class="xGshownLeft"> xG: </p>
                 </div>
                     <div class="scoreboard">
+                        <button class="lock" id="lock6">
+                            <img id="lockImage6" class="lockImage" src="./images/unlocked.png" alt="Unlock fixture">
+                        </button>
                         <p class="score" id="homeScore6"> - </p>
                         <p class="versus"> <b>v</b></p>
                         <p class="score" id="awayScore6"> - </p>
@@ -159,7 +203,8 @@
                     </div>
                 <div class="team" id="awayTeam6">
                     <img src="./images/PL.webp" height="75" width="auto" alt="PL Team">
-                    <p>team 12</p>
+                    <p class="teamTop">team 12</p>
+                    <p id="awayxg6" class="xGshownRight"> xG: </p>
                 </div>
             </div>
         </div>
@@ -173,8 +218,8 @@
 
     <footer>
         <a href="info.html"> how it works</a>
-            <a id=s6button href="https://super6.skysports.com/played" target="_blank" rel="noopener noreferrer">
-                <img id="super6" src="./images/super6.webp" width="100" height="auto" alt="Super 6">
+            <a class="imgLink" href="https://super6.skysports.com/played" target="_blank" rel="noopener noreferrer">
+                <img src="./images/super6.webp" width="100" height="auto" alt="Super 6">
             </a>
     </footer>
 

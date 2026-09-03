@@ -25,6 +25,33 @@ main{
     flex: 1;
 }
 
+.lock{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 15px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.lock:hover{
+    cursor: pointer;
+}
+
+.lockImage{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
+select:hover{
+    cursor: pointer;
+}
+
 header {
     background-color: rgb(80, 80, 80);
     padding-top: 10px;
@@ -44,13 +71,37 @@ footer {
 .team {
     display: inline-block;
     width: 110px;
-    height: 132px;
+    height:170px;
     padding-top: 30px;
     vertical-align: top;
 }
 
-.team p{
+.teamName{
+    margin-bottom: 0px;
+}
+
+.xGshownLeft{
+    margin-top:5px;
+    font-size: 10px;
+    text-align: left;
+    padding-left: 10px;
+    text-transform: none;
+    visibility: hidden;
+}
+
+.xGshownRight{
+    margin-top:5px;
+    font-size: 10px;
+    text-align: right;
+    padding-right: 10px;
+    text-transform: none;
+    visibility: hidden;
+}
+
+
+.teamTop{
     margin-top: 20px;
+    margin-bottom: 0px;
     width: 100px;
     height: 38px;
     display: flex;
@@ -69,7 +120,7 @@ footer {
     display: inline-block;
     margin: 0;
     vertical-align: top;
-    padding-top: 55px;
+    padding-top: 15px;
 }
 
 select {
@@ -129,7 +180,64 @@ option:checked {
     text-align: center;
 }
 
-button {
+#showxG {
+    text-align: center;
+    padding-top: 5px;
+    color: rgb(0, 0, 167);
+}
+
+#small{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    text-transform: none;
+    font-size: small;
+}
+
+#toggle{
+    margin-bottom: 5px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background-color: grey;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+.switch input:checked + .slider {
+    background-color: green;
+}
+
+#generate {
     font-family: "Roboto", sans-serif;
     font-size: 20px;
     font-weight: 500;
@@ -149,7 +257,7 @@ button {
         min-width: 382px;
     }
 
-    button {
+    #generate {
         width: calc(100% - 30px);
     }
 }
@@ -159,7 +267,7 @@ hr{
 }
 
 
-button:hover {
+#generate:hover {
     cursor: pointer;
     background-color: rgb(0, 82, 41);
 }
@@ -167,12 +275,12 @@ button:hover {
 
 footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: flex-end;
     padding: 5px;
 }
 
-#super6{
+.linkImg{
     display: block; 
 }
 
@@ -180,7 +288,7 @@ footer {
     color: black; 
 }
 
-#s6button:hover{
+.imgLink:hover{
     transform: scale(1.1);
 }
 
@@ -241,4 +349,8 @@ footer {
     max-width: 100%;
     height: auto;
     margin: 0 auto;
+}
+
+#pitchodds{
+    display: inline-block;
 }
