@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SG6 Info</title>
+    <link rel="icon" type="image/jpg" href="./images/favicon.png">
+    <link rel="stylesheet" href="./style.css">
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']]
+        }
+    };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+     <header>
+        <h1>
+            <img id="logo" src="./images/logo.png" width=auto height="80" alt="Super 6 Generator">
+        </h1>
+        <hr>
+    </header>
+
+    <main id="infoPage">
+        <div class="column title" class="title">
+            <p class="noSpacing">How it works</p>
+        </div>
+        <div class="column info">
+            <p class="noSpacing">
+                Super 6 Generator generates 
+                <a class=link href="https://super6.skysports.com" target="_blank" rel="noopener noreferrer">Super 6</a>
+                predictions for the live round based on expected goal (xG) projections from 
+                <a class=link href="https://pitchodds.app/" target="_blank" rel="noopener noreferrer">PitchOdds</a>.
+                The generator attempts to replicate the unpredictability of football by using a range of weighted probabilities and
+                goal distributions to randomly generate a scoreline for each of the six fixtures. If you're unsure of a fixture,
+                Super 6 Generator is a great way to find some inspiration, with five levels of randomness available to play with -
+                "<b>xG Rounded</b>", "<b>Very conservative</b>", "<b>Conservative</b>", "<b>Volatile</b>" and "<b>Random</b>".
+            </p>
+        </div>
+        <div class="column title" >
+            <p class="noSpacing">xG Rounded and Random</p>
+        </div>
+        <div class="column info">
+            <p class="noSpacing">
+                The most basic of the five options, <b>xG Rounded</b> and <b>Random</b>, offer the extremes of the generator.
+            </p>
+            <p>
+                <b>xG Rounded</b> pulls expected goals directly from the PitchOdds API and rounds them to the nearest goal. For example, if
+                Ipswich and Liverpool are projected 1.1 and 2.7 goals respectively against each other then the generator will return
+                Ipswich (1) - (3) Liverpool.
+            </p>
+            <p class="noSpacing">
+                <b>Random</b> uses the built-in JavaScript methods Math.random() and Math.floor() in the form Math.floor(Math.random() * 7).
+                Math.random() produces a pseudorandom decimal number between 0 (inclusive) and 1 (exclusive) which is then multiplied by 7 and
+                rounded down by Math.floor() to produce a number between 0 and 6. 
+            </p>
+        </div>
+        <div class="column title">
+            <p class="noSpacing">Volatile</p>
+        </div>
+        <div class="column info">
+            <p class="noSpacing">
+                <b>Volatile</b> generates a scoreline by putting xG projections into a Poisson Distribution. 
+            </p>
+            <p>
+                A Poisson Distribution is a discrete statistical distribution that gives the probability of an event occurring a certain number 
+                of times in a fixed interval, given that the average (mean) number of occurrences is known for that interval.
+                For example, if it is known that on average 10 cars pass a certain spot every hour, a Poisson Distribution will give
+                probabilities for any number of cars passing that spot in any given hour. The Poisson probability is given by:
+            </p>
+            <p>
+                \[
+                P(X=k)=\frac{\lambda^k e^{-\lambda}}{k!}
+                \]
+            </p>
+            <p>
+                Where:<br>
+                \( e \) = Euler's number (mathematical constant)<br>
+                \( \lambda \) (lambda) = mean (or rate)<br>
+                \( k \) = number of occurrences being predicted<br>
+                \( P(X=k) \) = probability of \( k \) occurrences
+            </p>
+            <p>
+                This can be applied directly to football matches, which have a fixed interval of 90 minutes. Although the average (mean) 
+                goals scored by a team might not necessarily reflect the opponent they are playing, expected goals can be used as a 
+                suitable replacement such that:
+            </p>
+            <p>
+                \[
+                P(k \text{ goals scored})=\frac{\text{xG}^k e^{-\text{xG}}}{k!}
+                \]
+            </p>
+            <p>
+                From this equation a distribution of probabilities can be derived. An example of a team that has 1.5 xG for a match is 
+                given below:
+            </p>
+            <img class="poissonChart" src="./images/poisson_example.png" height="auto" width="700" alt="PL Team">
+            <p>
+                From this distribution, a number of goals for a team can be randomly selected with a weighted chance towards the expected
+                goals for that team. Similarly to the random goal generator, Math.random() produces a pseudorandom number x where 0 ≤ x 
+                < 1. And that number will be used to select the of goals - from the example above if \(x\) falls between the cumulative 
+                probabilities of 0.223 and 0.558, then 1 goal would be selected. 
+            </p>
+            
+        </div>
+        <div class="column title"">
+            <p class="noSpacing">Conservative and Very Conservative</p>
+        </div>
+        <div class="column" id="bottom">
+            <p class="noSpacing">
+                <b>Very conservative</b> and <b>Conservative</b> use a modified Poisson Distribution which forces the generated goals to
+                have a more concentrated range of outcomes. Firstly, a Poisson alternative weighting model is used to determine weights:
+                \[
+                w_k \propto \frac{\lambda^k}{(k!)^c}
+                \]
+            </p>
+            <p>
+                Where:<br>
+                \( w_k \) = the weight assigned to \(k\) occurrences<br>
+                \( \lambda \) = the calibrated model parameter (derived from expected goals)<br>
+                \( \text{k} \) = the number of goals being predicted<br>
+                \( c \) = the concentration parameter
+            </p>
+            <p>
+                The concentration parameter controls how concentrated the outcomes become. A higher value produces a more concentrated 
+                range of outcomes. In this case, <b>Conservative</b> uses 2.5 and <b>Very conservative</b> uses 8.
+            </p>
+            <p>
+                Calibration is then needed. Increasing the concentration causes the mean of the resulting distribution to differ from the
+                original xG. To correct for this, a formula can be applied to xG depending on the concentration. The following formulas 
+                were found to make the mean of the resulting distribution match the xG for this model:
+            </p>
+              <p>
+                <b>Conservative:</b><br>
+                \(\lambda = 2.35xG^{1.855}\)
+            </p>
+            <p>
+                <b>Very conservative:</b><br>
+                \(\lambda = 29.775xG^{5.607}\)
+            </p>
+            <p>
+                After this step, the values for \(\lambda\) and \(c\) can be plugged into the weighting equation. However, this produces 
+                weights that are only relative and need to be normalised into probabilities that ensure all weights add up to 1 (100%). 
+                This is done by taking each weight and dividing it by the sum of all the weights.
+            </p>
+            <p>
+                The number of goals is then selected in the same way as what is used for Volatile, but with much tighter ranges as shown
+                below:
+            </p>
+            <img class="poissonChart" src="./images/alt_poisson.png" height="auto" width="700" alt="PL Team">
+        </div>
+
+    </main>
+
+    <footer>
+        <a id="back" href="index.html"> Back To Generator </a>
+        <hr>
+            <a id=s6button href="https://super6.skysports.com/played" target="_blank" rel="noopener noreferrer">
+                <img id="super6" src="./images/super6.webp" width="100" height="auto" alt="Super 6">
+            </a>
+    </footer>
+</body>
+</html>
