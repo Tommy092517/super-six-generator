@@ -146,7 +146,7 @@ button {
     .match {
         width: calc(80%);
         margin: 30px auto;
-        min-width: 400px;
+        min-width: 396px;
     }
 
     button {
